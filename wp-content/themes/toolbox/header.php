@@ -3,8 +3,12 @@
  * @package WordPress
  * @subpackage Toolbox
  */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+?><!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <title><?php
@@ -28,13 +32,26 @@
 		echo ' | ' . sprintf( __( 'Page %s', 'toolbox' ), max( $paged, $page ) );
 
 	?></title>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<!--[if lt IE 9]>
-<script src="<?php bloginfo( 'template_directory' ); ?>/html5.js" type="text/javascript"></script>
-<![endif]-->
+
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<!-- CSS: implied media="all" -->
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
+	<!-- All JavaScript at the bottom, except for Modernizr and Respond.
+		Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+		For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+	<script src="js/libs/modernizr-2.0.min.js"></script>
+	<script src="js/libs/respond.min.js"></script>
 
 <?php wp_head(); ?>
 </head>
