@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'giusi_focus_wp');
+define('DB_NAME', 'giusi_focus_db');
 
 /** MySQL database username */
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'ludw1gst31n');
+define('DB_PASSWORD', 'p0m0d0r0');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
