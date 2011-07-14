@@ -63,7 +63,7 @@
 			<?php $options = get_option('focus_theme_options');
 				if ($options['radioinput']=='yes'):
 			?>
-				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">IMAGE</a></span></h1>
+				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo $options['logo_url']?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
 			<?php else:?>
 				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 			<?php endif;?>

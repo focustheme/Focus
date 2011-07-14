@@ -1,7 +1,13 @@
 <?php
 $theme_name = 'focus';
-add_action( 'admin_init', 'focus_options_init' );
-add_action( 'admin_menu', 'focus_options_add_page' );
+
+	add_action('admin_init', 'focus_options_init');
+	add_action('admin_menu', 'focus_options_add_page');
+	
+if (isset($_GET['page']) && $_GET['page'] == 'theme_options') {
+	add_action('admin_print_scripts', 'my_admin_scripts');
+	add_action('admin_print_styles', 'my_admin_styles');
+}
 
 /**
  * Init plugin options to white list our options
@@ -87,6 +93,16 @@ function theme_options_do_page() {
 					</td>
 				</tr>
 				 
+				<tr valign="top">
+					<th scope="row">Upload Image</th>
+					<td><label for="upload_image">
+					<input id="upload_image" type="text" size="36" name="upload_image" value="<?php esc_attr_e( $options['logo_url'] ); ?>" />
+					<input id="upload_image_button" type="button" value="Upload Image" />
+					<input type="hidden" name="focus_theme_options[logo_url]" id="logo_url" value="<?php esc_attr_e( $options['logo_url'] ); ?>" /> 
+					<br />Enter an URL or upload an image for the logo.
+					</label></td>
+				</tr>
+				 
 			</table>
 
 			<p class="submit">
@@ -109,7 +125,7 @@ function theme_options_validate( $input ) {
 	$input['option1'] = ( $input['option1'] == 1 ? 1 : 0 );
 
 	// Say our text option must be safe text with no HTML tags
-	$input['sometext'] = wp_filter_nohtml_kses( $input['sometext'] );
+	$input['logo_url'] = wp_filter_nohtml_kses( $input['logo_url'] );
 
 	// Our select option must actually be in our array of select options
 	if ( ! array_key_exists( $input['selectinput'], $select_options ) )
@@ -127,4 +143,18 @@ function theme_options_validate( $input ) {
 	return $input;
 }
 
-// adapted from http://planetozh.com/blog/2009/05/handling-plugins-options-in-wordpress-28-with-register_setting/
+function my_admin_scripts() {
+	$theme_root = get_theme_root();
+	wp_enqueue_script('media-upload');
+	wp_enqueue_script('thickbox');
+	wp_register_script('my-upload', '/wp-content/themes/focus/js/focus-script.js', array('jquery','media-upload','thickbox'));
+	wp_enqueue_script('my-upload');
+}
+
+function my_admin_styles() {
+	wp_enqueue_style('thickbox');
+}
+
+
+
+
