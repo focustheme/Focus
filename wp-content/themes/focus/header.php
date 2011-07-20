@@ -56,18 +56,26 @@
 <?php wp_head(); ?>
 </head>
 
+<?php function my_theme_logo(){
+      global $up_options;
+      if($up_options->logo):
+?>
+      <h1 id="site-title"><a href="http://mywebsite.com"><img src="<?php echo $up_options->logo; ?>"></a></h1>
+<?php
+	  else:
+?>
+      <h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+<?php
+	  endif;
+      }
+?>
+
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 			<hgroup>
-			<?php $options = get_option('focus_theme_options');
-				if ($options['radioinput']=='yes'):
-			?>
-				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo $options['logo_url']?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
-			<?php else:?>
-				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-			<?php endif;?>
-				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+	 			<?php my_theme_logo();?>
+			 	<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
 
 			<nav id="access" role="navigation">

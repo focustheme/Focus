@@ -1,7 +1,7 @@
 <?php
 
 require_once ( get_template_directory() . '/theme-options.php' );
-
+require_once('admin/admin.php'); // bootstrap the UpThemes Framework
 /**
  * @package WordPress
  * @subpackage Toolbox
