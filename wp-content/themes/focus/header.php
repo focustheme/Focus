@@ -1,3 +1,21 @@
+<?php function my_theme_logo(){
+      global $up_options;
+      if($up_options->logo):
+?>
+      <h1 id="site-title"><a href="http://mywebsite.com"><img src="<?php echo $up_options->logo; ?>"></a></h1>
+<?php
+	  else:
+?>
+      <h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+<?php
+	  endif;
+      }
+?>
+<?php function my_description(){
+	      global $up_options;
+    	  echo ($up_options->seo_homepage_description);
+      }
+?>
 <?php
 /**
  * @package WordPress
@@ -33,7 +51,7 @@
 
 	?></title>
 
-	<meta name="description" content="">
+	<meta name="description" content="<?php my_description()?>">
 	<meta name="author" content="">
 
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -55,21 +73,6 @@
 
 <?php wp_head(); ?>
 </head>
-
-<?php function my_theme_logo(){
-      global $up_options;
-      if($up_options->logo):
-?>
-      <h1 id="site-title"><a href="http://mywebsite.com"><img src="<?php echo $up_options->logo; ?>"></a></h1>
-<?php
-	  else:
-?>
-      <h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-<?php
-	  endif;
-      }
-?>
-
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">

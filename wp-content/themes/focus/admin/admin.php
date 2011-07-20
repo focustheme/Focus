@@ -390,7 +390,7 @@ function upthemes_admin_import_export(){require_once('import-export.php');}
 *************************************/
 function upfw_upthemes_admin() {
 
-    $name = __('Theme Options','upfw');
+    $name = __('Focus Options','upfw');
 
 	$theme_options_icon = apply_filters('theme_options_icon',THEME_DIR.'/admin/images/upfw_ico_up_16x16.png');
 
@@ -695,7 +695,7 @@ add_action('upfw_admin_header','upfw_admin_header_open',1);
 *************************************/
 function upfw_admin_header_title(){ ?>
 	<div id="icon-upfw" class="icon32 icon32-upfw"></div>
-	<h2><?php _e("Theme Options","upfw"); ?></h2> <?php
+	<h2><?php _e("Focus Options","upfw"); ?></h2> <?php
 }
 
 add_action('upfw_admin_header','upfw_admin_header_title',100);
